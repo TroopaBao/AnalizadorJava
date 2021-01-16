@@ -7,11 +7,11 @@ public class ExpresionesRegulares
 	
 	
 	// Clase de n�meros
-	public boolean isDigito(String cad) 
+	public boolean isDigito(String cad)
 	{
 		return Pattern.matches("[0-9]", cad);
 	}
-	public boolean isEntero(String cad)//45
+	public boolean isEntero(String cad)
 	{
 		return Pattern.matches("[0-9]+",cad);
 	}

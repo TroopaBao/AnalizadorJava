@@ -19,7 +19,7 @@ public class AnalisisSintactico {
 		Vector pila=new Vector<String>(); //Cadena analizadora o Pila
 		int posprocedimientos=-1;
 		for (int i = 0; i < archivodatos.size(); i++) {
-			System.out.println("Cadena: "+archivodatos.get(i));
+			System.out.println("Cadena :v "+archivodatos.get(i));
 		}
 		System.out.println("Analiz SInta Elementos: "+cv);
 		System.out.println("Analiz SInta Condiciones: "+cc);
@@ -158,6 +158,8 @@ public class AnalisisSintactico {
 			if(valido)
 			{
 				System.out.println("Cadena v�lida para el aut�mata");
+				AnalizadorSemantico as=new AnalizadorSemantico(cv, cc, Int);
+				as.Analizar(archivoriginal, archivodatos, Int);
 			}
 			else
 				System.out.println("Cadena no v�lida para el aut�mata");

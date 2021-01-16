@@ -1,10 +1,8 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -12,7 +10,7 @@ public class Lector
 {
 	FileInputStream entrada;
 	FileOutputStream salida;
-	//File ArchJonBich;
+	File ArchJonBich;
 	ExpresionesRegulares expresion=new ExpresionesRegulares();
 	Vector <String> archivooriginal=new Vector(), archivodatos=new Vector();
 	int elementos=0, condiciones=0;
@@ -60,7 +58,7 @@ public class Lector
 	
 	public void Lectura(File archivo, String texto, Interfaz Int)
 	{
-
+		Int.consola.setText("");
 		try
 		{
 			elementos=0;
@@ -83,7 +81,7 @@ public class Lector
 					{
 						String caracter=cad.charAt(i)+"";
 						//Recorrer cada elemento del rengl�n
-						if(mensaje) 
+						if(mensaje)
 						{ //Todo lo que escriba ser� mensaje, hasta que escriba un par�ntesis
 							if(caracter.equals("'"))
 							{
@@ -131,9 +129,8 @@ public class Lector
 							expresion.isOperadorLogico(caracter) || expresion.isDelimitador(caracter)
 							 || expresion.isSeparador(caracter) || expresion.isPunto(caracter))
 							{
-								
 								if(expresion.isEntero(lexema) && expresion.isPunto(caracter))
-								{ 
+								{
 									//En caso de que el punto que tengamos sea doble
 									lexema+=caracter;
 								}
@@ -229,7 +226,7 @@ public class Lector
 											//Int.imprimirConsola(renglon+"\t"+columna+"\t"+lexema+"\t Identificador");
 											archivooriginal.add(lexema);
 											archivodatos.add("id");
-											if(tipodato)   
+											if(tipodato)
 												elementos++;
 										}
 										else
@@ -337,7 +334,7 @@ public class Lector
 												}
 												else
 												{
-													elementoanterior=caracter; 
+													elementoanterior=caracter;
 												}
 												
 												
@@ -431,7 +428,7 @@ public class Lector
 							else
 							{
 								//No contiene ; ni espacio, {, ( [
-								lexema+=caracter;   
+								lexema+=caracter;
 							}	
 						}
 					}
@@ -447,35 +444,12 @@ public class Lector
 			
 		}
 		System.out.println();
-		
-		String carmen="";
 		for (int j = 0; j < archivooriginal.size(); j++) {
-			System.out.println("Elemento: "+j + "\n");
-			carmen+="Elemento: "+j+"	\n";
+			System.out.println("Elemento: "+j);
 			System.out.println("Original: "+archivooriginal.get(j));
-			carmen+="Original: "+archivooriginal.get(j)+"	\n";
-			System.out.println("Tipo: "+archivodatos.get(j));
-			carmen+="Tipo: "+archivodatos.get(j)+"	\n";
+			System.out.println("Datos: "+archivodatos.get(j));
 			System.out.println();
-			carmen+="	\n";
 		}
-		
-		String rutta="C:\\Users\\mrviv\\Desktop\\holi.txt";
-		 try {
-			 //String ruta = "/home/mario/archivo.c";
-		        File archivoid = new File(rutta);
-		        BufferedWriter bw;
-		        if(archivoid.exists()) {
-		            bw = new BufferedWriter(new FileWriter(archivoid));
-		            bw.write(carmen);
-		        } else {
-		            bw = new BufferedWriter(new FileWriter(archivoid));
-		            bw.write(carmen);
-		        }
-		        bw.close();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
 		D.cantidadelementos=elementos;
 		D.condiciones=condiciones;
 		System.out.println("Elementos: "+D.cantidadelementos+". Condiciones: "+D.condiciones);
