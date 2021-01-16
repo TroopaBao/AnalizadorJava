@@ -1,0 +1,28 @@
+int x, y;
+begin
+ 
+   x=20; 
+    y=10;
+
+   if x==y 
+   begin
+       y=40;
+       do
+        begin
+            x=x+1;
+            Syso x
+        end
+       while x<=y
+   end
+   else
+   begin
+        if x<=y
+        begin
+            Syso 'La variable x es menor que la variable y'
+        end
+        else
+        begin
+            Syso 'La variable x es mayor que la variable y '
+        end
+   end 
+end .
